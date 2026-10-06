@@ -2,7 +2,7 @@ import React from "react";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { Button } from "../ui/button";
 import { Avatar, AvatarImage, AvatarFallback } from "../ui/avatar";
-import { LogOut, User2 } from "lucide-react";
+import { LogOut, User2, Briefcase } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
@@ -34,35 +34,40 @@ const Navbar = () => {
   };
 
   return (
-    <header className="bg-white border-b shadow-sm">
-      <div className="mx-auto max-w-7xl px-4">
+    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm transition-all">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
 
           {/* LOGO */}
-          <Link to="/" className="text-2xl font-bold">
-            Job<span className="text-[#F83002]">Portal</span>
+          <Link to="/" className="flex items-center gap-2.5 group">
+            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-purple-600 to-indigo-600 flex items-center justify-center text-white shadow-md shadow-purple-200 group-hover:scale-105 transition-transform">
+              <Briefcase className="w-5 h-5" />
+            </div>
+            <span className="text-2xl font-black tracking-tight text-gray-900">
+              Job<span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-indigo-600">Portal</span>
+            </span>
           </Link>
 
           {/* NAV LINKS */}
-          <nav className="flex items-center gap-6 font-medium">
+          <nav className="hidden md:flex items-center gap-8 font-medium text-sm">
             {user ? (
               role === "recruiter" ? (
                 <>
-                  <Link to="/admin/companies">Companies</Link>
-                  <Link to="/admin/jobs">Jobs</Link>
+                  <Link to="/admin/companies" className="text-gray-600 hover:text-purple-600 transition-colors">Companies</Link>
+                  <Link to="/admin/jobs" className="text-gray-600 hover:text-purple-600 transition-colors">Jobs</Link>
                 </>
               ) : (
                 <>
-                  <Link to="/">Home</Link>
-                  <Link to="/jobs">Jobs</Link>
-                  <Link to="/browse">Browse</Link>
+                  <Link to="/" className="text-gray-600 hover:text-purple-600 transition-colors">Home</Link>
+                  <Link to="/jobs" className="text-gray-600 hover:text-purple-600 transition-colors">Jobs</Link>
+                  <Link to="/browse" className="text-gray-600 hover:text-purple-600 transition-colors">Browse</Link>
                 </>
               )
             ) : (
               <>
-                <Link to="/">Home</Link>
-                <Link to="/jobs">Jobs</Link>
-                <Link to="/browse">Browse</Link>
+                <Link to="/" className="text-gray-600 hover:text-purple-600 transition-colors">Home</Link>
+                <Link to="/jobs" className="text-gray-600 hover:text-purple-600 transition-colors">Jobs</Link>
+                <Link to="/browse" className="text-gray-600 hover:text-purple-600 transition-colors">Browse</Link>
               </>
             )}
           </nav>
@@ -72,11 +77,13 @@ const Navbar = () => {
             {!user ? (
               <>
                 <Link to="/login">
-                  <Button variant="outline">Login</Button>
+                  <Button variant="ghost" className="text-gray-700 hover:text-purple-700 font-semibold text-sm">
+                    Login
+                  </Button>
                 </Link>
                 <Link to="/signup">
-                  <Button className="bg-[#6A38C2] hover:bg-[#5b30a6]">
-                    Signup
+                  <Button className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-semibold text-sm rounded-xl px-5 shadow-md shadow-purple-200 transition-all">
+                    Sign Up
                   </Button>
                 </Link>
               </>

@@ -38,23 +38,25 @@ const CategoryCarousel = () => {
   };
 
   return (
-    <section className="py-14 bg-gray-50">
-      <div className="mx-auto max-w-6xl px-4">
+    <section className="py-16 bg-white border-y border-gray-100">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
 
         {/* Heading */}
-        <div className="text-center mb-8">
-          <h2 className="text-2xl font-bold text-gray-900">
-            Browse by <span className="text-[#6A38C2]">Category</span>
+        <div className="text-center mb-10">
+          <span className="text-xs font-bold tracking-wider uppercase text-purple-600 bg-purple-50 px-3 py-1 rounded-full border border-purple-100">
+            Top Industries
+          </span>
+          <h2 className="text-3xl font-extrabold text-gray-900 mt-3">
+            Browse by <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-indigo-600">Category</span>
           </h2>
-          <p className="mt-1 text-sm text-gray-500">
-            Quick access to popular job roles
+          <p className="mt-2 text-sm text-gray-500 max-w-md mx-auto">
+            Explore curated open positions by specialized discipline and technology stack
           </p>
         </div>
 
         {/* Carousel */}
-        <Carousel className="w-full max-w-4xl mx-auto">
+        <Carousel className="w-full max-w-4xl mx-auto px-6">
           <CarouselContent className="-ml-3">
-
             {categories.map((cat, index) => (
               <CarouselItem
                 key={index}
@@ -64,11 +66,12 @@ const CategoryCarousel = () => {
                   onClick={() => searchJobHandler(cat)}
                   className="
                     w-full truncate
-                    rounded-full border border-gray-200 bg-white
-                    px-3 py-2 text-xs sm:text-sm font-medium text-gray-700
-                    transition
-                    hover:border-[#6A38C2] hover:text-[#6A38C2]
-                    hover:bg-[#F5F0FF]
+                    rounded-xl border border-gray-200/80 bg-gray-50/50
+                    px-4 py-3 text-xs sm:text-sm font-semibold text-gray-700
+                    transition-all duration-200
+                    hover:border-purple-300 hover:text-purple-700
+                    hover:bg-purple-50/70 hover:shadow-md hover:-translate-y-0.5
+                    active:scale-95
                   "
                   title={cat}
                 >
@@ -76,11 +79,10 @@ const CategoryCarousel = () => {
                 </button>
               </CarouselItem>
             ))}
-
           </CarouselContent>
 
-          <CarouselPrevious className="left-[-1.5rem]" />
-          <CarouselNext className="right-[-1.5rem]" />
+          <CarouselPrevious className="-left-4 bg-white border border-gray-200 shadow-sm hover:bg-gray-50 text-gray-700" />
+          <CarouselNext className="-right-4 bg-white border border-gray-200 shadow-sm hover:bg-gray-50 text-gray-700" />
         </Carousel>
 
       </div>

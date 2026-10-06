@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "./shared/Navbar";
+import Footer from "./shared/Footer";
 import FilterCard from "./FilterCard";
 import Job from "./Job";
 import { useSelector } from "react-redux";
@@ -81,13 +82,14 @@ const Jobs = () => {
                     >
                       <Job job={job} />
                     </motion.div>
-                  ))}
+                    ))}
                 </div>
               </div>
             )}
           </section>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
